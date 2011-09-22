@@ -77,7 +77,9 @@ else
   elseif executable('js')
     let s:cmd = 'js'
   else
-    echoerr('No JS interpreter found. Checked for jsc, js (spidermonkey), and node')
+      " silently disable jslint if no JS interpreter found
+      let b:jslint_disabled = 1
+      let s:cmd = ''
   endif
 endif
 let s:plugin_path = s:install_dir . "/jslint/"
